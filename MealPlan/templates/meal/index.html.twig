@@ -3,6 +3,7 @@
 {% block title %}{% endblock %}
 
 {% block body %}
+<a href="/login"> LOG OUT </a>
 <div class="container mt-5">
      <h1>This is main page </h1>
      <h2 class="text-center mt-2 mb-5 fw-light"> Latest Meals</h2>
@@ -18,7 +19,7 @@
                         <h5 class="card-title">{{ meal.prep_time }}</h5>
                         <a href="/edit/{{ meal.id }}" class="btn btn-outline-success btn-sm fw-light rounded-pill">edit</a>
                         <a href="/details/{{ meal.id }}" class="btn btn-outline-warning btn-sm fw-light rounded-pill">details</a>
-                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger btn-sm fw-light rounded-pill">delete</a>  
+                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger btn-sm fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>  
                     </div>
                 </div>
             </div>

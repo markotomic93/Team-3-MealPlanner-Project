@@ -3,13 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
         {% include "components/boot.html.twig" %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+           <script src="{{ asset('js/login.js') }}"></script>
         {% endblock %}
     </head>
     <body>

@@ -62,11 +62,6 @@ class Meals
      */
     private $type;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Users::class)
-     */
-    private $fk_users;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -176,18 +171,6 @@ class Meals
     public function setType(string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function getFkUsers(): ?Users
-    {
-        return $this->fk_users;
-    }
-
-    public function setFkUsers(?Users $fk_users): self
-    {
-        $this->fk_users = $fk_users;
 
         return $this;
     }

@@ -151,7 +151,7 @@ class MealController extends AbstractController
             return $this->redirectToRoute('meal');
         }
         
-        return $this->render('meail/edit.html.twig', [  
+        return $this->render('meal/edit.html.twig', [  
             "form" => $form->createView()
          ]);
     }
