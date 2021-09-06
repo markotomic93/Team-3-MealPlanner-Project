@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center  mt-5 ">
+    <div class="card bg-light " >
+        <div class="card-body shadow" style="width:18rem;">
+            <h5 class="card-title">{{ meals.name }}</h5>
+            {{ meals.description }}<br>
+            {{ meals.prep_time }}<br>
+            </p>
+            <a href="/edit/{{ meals.id }}" class="btn btn-outline-success btn-sm fw-light rounded-pill">edit</a>
+            <a href="/delete/{{ meals.id }}" class="btn btn-outline-danger btn-sm fw-light rounded-pill">delete</a>  
+        </div>
+    </div>
+</div>
+{% endblock %}

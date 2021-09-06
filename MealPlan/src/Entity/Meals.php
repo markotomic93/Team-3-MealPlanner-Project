@@ -40,7 +40,7 @@ class Meals
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prep_time;
+    public $prep_time;
 
     /**
      * @ORM\Column(type="string", length=255)

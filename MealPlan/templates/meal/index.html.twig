@@ -1,27 +1,29 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
 {% block body %}
-    <h2 class="page-header"> Latest meals </h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>meals/th>
-                <th>Due Date</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-          {% for meals in meals %} 
-            <tbody>
-                <tr>
-                    <th scope="row">{{meals.id}}</th> 
-                    <td>{{meals.name}}</td> 
-                    <td> <a href="/details/{{meals.id}}" class="btn btn-success">View</a>  
-                        <a href="/edit/{{meals.id}}" class="btn btn-default">Edit</a>
-                        <a href="/delete/{{meals.id}}" class="btn btn-danger">Delete</a>       
-                    </td>
-                </tr> 
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container mt-5">
+     <h1>This is main page </h1>
+     <h2 class="text-center mt-2 mb-5 fw-light"> Latest Meals</h2>
+   <a href="/create/">Create new Meal</a>
+    <div class="row">
+        {% for meal in meals %}
+            <div class="col-10 offset-1 col-md-4 offset-md-0">
+                <div class="card mb-4" >
+                    <div class="card-body shadow bg-light">
+                    <img class="card-img-top" src="{{ meal.image }}">
+                        <h5 class="card-title">{{ meal.name }}</h5>
+                        <h5 class="card-title">{{ meal.description }}</h5>
+                        <h5 class="card-title">{{ meal.prep_time }}</h5>
+                        <a href="/edit/{{ meal.id }}" class="btn btn-outline-success btn-sm fw-light rounded-pill">edit</a>
+                        <a href="/details/{{ meal.id }}" class="btn btn-outline-warning btn-sm fw-light rounded-pill">details</a>
+                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger btn-sm fw-light rounded-pill">delete</a>  
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+<div>
+
 {% endblock %}
