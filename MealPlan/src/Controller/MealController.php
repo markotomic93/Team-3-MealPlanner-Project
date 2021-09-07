@@ -27,9 +27,9 @@ class MealController extends AbstractController
        return $this->render('meal/index.html.twig', array('meals'=>$meals));
     }
 
-    //==
-    //=== Creating new Products====
-    //==
+//==
+//=== Creating new Products====
+//==
 
     #[Route('/create', name: 'create_meal')]
     public function create(Request $request): Response
@@ -44,7 +44,7 @@ class MealController extends AbstractController
         ->add("calories", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("url", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("cooking_steps", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'low carb'=>'low carb','gluten free'=>'gluten free','dairy free'=>'dairy free')))
+        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'lowcarb'=>'lowcarb','glutenfree'=>'glutenfree','dairyfree'=>'dairyfree')))
         ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"Create Meal"))->getForm();
         $form->handleRequest($request);
 
@@ -115,7 +115,7 @@ class MealController extends AbstractController
         ->add("calories", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("url", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("cooking_steps", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'low carb'=>'low carb','gluten free'=>'gluten free','dairy free'=>'dairy free')))
+        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'lowcarb'=>'lowcarb','glutenfree'=>'gluten free','dairyfree'=>'dairyfree')))
         ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"Edit Complete"))->getForm();
         $form->handleRequest($request);
 
@@ -172,8 +172,6 @@ class MealController extends AbstractController
     }
 
 
-
-    
     //==
     //=== Filtering Meals ===
     //==
