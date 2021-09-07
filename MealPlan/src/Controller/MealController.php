@@ -43,9 +43,9 @@ class MealController extends AbstractController
         ->add("prep_time", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("calories", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("url", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("cooking_steps", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('Vegan'=>'Vegan', 'Vegetarian'=>'Vegetarian', 'Low Carb'=>'Low Carb','Gluten-free'=>'Gluten-free','Dairy-free'=>'Dairy-free')))
-        ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"create todo"))->getForm();
+        ->add("cooking_steps", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
+        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'low carb'=>'low carb','gluten free'=>'gluten free','dairy free'=>'dairy free')))
+        ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"Create Meal"))->getForm();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -108,15 +108,15 @@ class MealController extends AbstractController
         $meals = $this->getDoctrine()->getRepository(Meals::class)->find($id);
         $form = $this->createFormBuilder($meals)
         ->add("name", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("description", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
+        ->add("description", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("image", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("ingredients", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("prep_time", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("calories", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
         ->add("url", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("cooking_steps", TextType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
-        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('Vegan'=>'Vegan', 'Vegetarian'=>'Vegetarian', 'Low Carb'=>'Low Carb','Gluten-free'=>'Gluten-free','Dairy-free'=>'Dairy-free')))
-        ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"create todo"))->getForm();
+        ->add("cooking_steps", TextareaType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px")))
+        ->add("type", ChoiceType::class, array('attr'=>array("class"=>"form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style"=>"margin-bottom:15px"), "choices"=> array('vegan'=>'vegan', 'vegetarian'=>'vegetarian', 'low carb'=>'low carb','gluten free'=>'gluten free','dairy free'=>'dairy free')))
+        ->add("save", SubmitType::class, array('attr'=>array("class"=>"btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style"=>"margin-bottom:15px"),"label"=>"Edit Complete"))->getForm();
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -173,24 +173,51 @@ class MealController extends AbstractController
 
 
 
+//==
+//=== Filtering Meals ===
+//==
+public function indexFilt(string $type): Response {
+    $repository = $this->getDoctrine()->getRepository('App:Meals');
+    $meals  = $repository->findAll();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    if($type == 'vegan') {
+        $meals  = $repository->findBy(['type'=>'vegan']);
+    } else if($type == 'vegetarian'){
+        $meals  = $repository->findBy(['type'=>'vegetarian']);
+    } else if($type == 'low carb'){
+        $meals  = $repository->findBy(['type'=>'low carb']);
+    } else if($type == 'gluten free'){
+        $meals  = $repository->findBy(['type'=>'gluten free']);
+    } 
+    else if($type == 'dairy free'){
+        $meals  = $repository->findBy(['type'=>'dairy free']);
+    } 
+               
+    return $this->render('meal/index.html.twig', 
+    array('meals'=>$meals)
+    );
+    return $this->render('static/index.html.twig', 
+    array('meals'=>$meals)
+    );
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
