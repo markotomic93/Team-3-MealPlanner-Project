@@ -173,35 +173,19 @@ class MealController extends AbstractController
 
 
 
-//==
-//=== Filtering Meals ===
-//==
-public function indexFilt(string $type): Response {
-    $repository = $this->getDoctrine()->getRepository('App:Meals');
-    $meals  = $repository->findAll();
-
-    if($type == 'vegan') {
-        $meals  = $repository->findBy(['type'=>'vegan']);
-    } else if($type == 'vegetarian'){
-        $meals  = $repository->findBy(['type'=>'vegetarian']);
-    } else if($type == 'low carb'){
-        $meals  = $repository->findBy(['type'=>'low carb']);
-    } else if($type == 'gluten free'){
-        $meals  = $repository->findBy(['type'=>'gluten free']);
-    } 
-    else if($type == 'dairy free'){
-        $meals  = $repository->findBy(['type'=>'dairy free']);
-    } 
-               
-    return $this->render('meal/index.html.twig', 
-    array('meals'=>$meals)
-    );
-    return $this->render('static/index.html.twig', 
-    array('meals'=>$meals)
-    );
+    
+    //==
+    //=== Filtering Meals ===
+    //==
+    #[Route('/filter/{type}', name: 'meal.filter')]
+    public function mealFilter(string $type): Response {
+        $em = $this->getDoctrine()->getManager();
+        $meals = $em->getRepository(Meals::class)->findByType($type);
+        return $this->render('meal/index.html.twig', 
+            array('meals'=>$meals)
+        );
+    }
 }
-}
-
 
 
 
