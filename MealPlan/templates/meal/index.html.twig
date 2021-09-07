@@ -23,16 +23,27 @@
     
     <div class="row" id="section">
         {% for meal in meals %}
-            <div class="col-10 offset-1 col-md-4 offset-md-0">
-                <div class="card h-100 bg-transparent mb-4" >
-                 <img class="card-img-top" src="{{ meal.image }}">
-                    <div class="card-body shadow bg-light">
-                        <h5 class="card-title">{{ meal.name }}</h5>
-                        <h5 class="card-title">{{ meal.description }}</h5>
-                        <h5 class="card-title">{{ meal.prep_time }}</h5>
+            <div class="col-10 offset-1 col-md-4 offset-md-0 mb-4">
+                <div class="card mb-4 bg-transparent">
+                 <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
+                    <div class="card-body shadow bg-light text-center"> 
+                     <div class="meal-item text-center ">    
+
+                         <div class="card-title icon"><i class=" far fa-clock" >{{ meal.prep_time }}</i></div>
+                         <div class="card-title icon"><i class=" bi bi-book">{{ meal.ingredients }}</i></div>
+                         </div>
+                         <br>
+                         <hr>
+                       
+                        <h3 class="card-title">{{ meal.name }} </h3>
+                        <br>
+                        <div class="mb-1"> 
                         <a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
                         <a href="/details/{{ meal.id }}" class="btn btn-outline-warning  fw-light rounded-pill">details</a>
-                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>  
+                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a> 
+                        
+                        </div>
+                         
                     </div>
                 </div>
             </div>
