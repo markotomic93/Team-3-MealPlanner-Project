@@ -27,14 +27,12 @@
                 <div class="card mb-4 bg-transparent">
                  <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
                     <div class="card-body shadow bg-light text-center"> 
-                     <div class="meal-item text-center ">    
-                         <div class="card-title icon"><i class=" far fa-clock" >{{ meal.prep_time }}</i></div>
-                         <div class="card-title icon"><i class=" bi bi-book">{{ meal.ingredients }}</i></div>
-                         </div>   
-                         <br>
-                         <hr>
+                
                         <h3 class="card-title">{{ meal.name }} </h3>
-                        <br>
+                        <hr>
+                        <div class="card-title text-secondary "><i class="icon-green bi bi-book" style="color:green;"> &nbsp  </i>{{ meal.ingredients }}</div>
+                        <div class="card-title "><i class=" far fa-clock"style="color:green;" >&nbsp {{ meal.prep_time }}</i> </div>
+                        <br>      
                         <div class="mb-1"> 
                         <a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
                         <a href="/details/{{ meal.id }}" class="btn btn-outline-warning  fw-light rounded-pill">details</a>
