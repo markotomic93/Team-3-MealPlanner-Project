@@ -3,23 +3,44 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<a href="/login"> LOG OUT </a>
 <div class="container mt-5">
-     <h1>This is main page </h1>
-     <h2 class="text-center mt-2 mb-5 fw-light"> Latest Meals</h2>
-   <a href="/create/">Create new Meal</a>
-    <div class="row">
+
+     <h2 class="text-center mt-2 mb-5 fw-light"> Enjoy the tour</h2>
+     <div class="d-flex justify-content-end mt-5 mb-5">
+        <div class="dropdown">
+            <button id="dropdownMenuButton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Please chose the Meal Group </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="/">All Meals</a></li>
+                <li><a class="dropdown-item" href="/filter/vegan">Vegan</a></li>
+                <li><a class="dropdown-item" href="/filter/vegetarian">Vegetarian</a></li>
+                <li><a class="dropdown-item" href="/filter/lowcarb">Low-Carb</a></li>
+                <li><a class="dropdown-item" href="/filter/glutenfree">Gluten-free</a></li>
+                <li><a class="dropdown-item" href="/filter/dairyfree">Dairy-free</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="row" id="section">
         {% for meal in meals %}
-            <div class="col-10 offset-1 col-md-4 offset-md-0">
-                <div class="card mb-4" >
-                    <div class="card-body shadow bg-light">
-                    <img class="card-img-top" src="{{ meal.image }}">
-                        <h5 class="card-title">{{ meal.name }}</h5>
-                        <h5 class="card-title">{{ meal.description }}</h5>
-                        <h5 class="card-title">{{ meal.prep_time }}</h5>
-                        <a href="/edit/{{ meal.id }}" class="btn btn-outline-success btn-sm fw-light rounded-pill">edit</a>
-                        <a href="/details/{{ meal.id }}" class="btn btn-outline-warning btn-sm fw-light rounded-pill">details</a>
-                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger btn-sm fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>  
+            <div class="col-10 offset-1 col-md-4 offset-md-0 mb-4">
+                <div class="card mb-4 bg-transparent">
+                 <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
+                    <div class="card-body shadow bg-light text-center"> 
+                     <div class="meal-item text-center ">    
+                         <div class="card-title icon"><i class=" far fa-clock" >{{ meal.prep_time }}</i></div>
+                         <div class="card-title icon"><i class=" bi bi-book">{{ meal.ingredients }}</i></div>
+                         </div>   
+                         <br>
+                         <hr>
+                        <h3 class="card-title">{{ meal.name }} </h3>
+                        <br>
+                        <div class="mb-1"> 
+                        <a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
+                        <a href="/details/{{ meal.id }}" class="btn btn-outline-warning  fw-light rounded-pill">details</a>
+                        <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>                     
+                        </div>
+                         
                     </div>
                 </div>
             </div>

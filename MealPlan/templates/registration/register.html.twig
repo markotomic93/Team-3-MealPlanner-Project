@@ -4,8 +4,10 @@
 {% endblock %}
 
 {% block body %}
-
-	<div class="container mt-5">
+{% block nav %}{% endblock %}
+{% block hero %}{% endblock %}
+{% block footer %}{% endblock %}
+	<div class="containerlog mt-5">
 
 		<h1>Register</h1>
 
@@ -42,14 +44,15 @@
 			{{ form_widget(registrationForm.Password)}}
 		</div>
 
+
+
 		<div class="text-dark">
 			{{ form_label(registrationForm.agreeTerms) }}
 			<span class="ml-2">{{ form_widget(registrationForm.agreeTerms) }}</span>
 		</div>
 
-
-		<button type="submit" class="btn btn-outline-success">Register</button>
-		<a href="/login" class="btn btn-outline-danger">Back</a>
+		<button type="submit" class="btn btn-success">Register</button>
+		<a href="/login" class="btn btn-danger">Back</a>
 		{{ form_end(registrationForm) }}
 	</div>
 {% endblock %}

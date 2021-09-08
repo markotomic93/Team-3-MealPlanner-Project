@@ -1,27 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
+{% block title %}
+Welcome to Mealplanner 
 {% endblock %}
 
 {% block body %}
+{% block nav %}{% endblock %}
+{% block hero %}{% endblock %}
+{% block footer %}{% endblock %}
+
 	<div class="wrapper">
-		<div class="container">
+		<div class="containerlog">
 			<form method="post">
 				{% if error %}
 					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
 				{% if app.user %}
-					<div class="mb-3">
+					<div class="mb-3 font-weight-normal text-dark">
 						You are logged in as
 						{{ app.user.username }},
-						<a href="{{ path('app_logout') }}">Logout</a>
 					</div>
 				{% endif %}
 
-				<h1 class="h3 mb-3 font-weight-normal text-light">Please sign in</h1>
+				<h1 class="h3 mb-3 font-weight-normal text-dark">Please sign in</h1>
 				<input type="email" value="{{ last_username }}" placeholder="Username" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-
 				<input type="password" placeholder="Password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
 				<input
@@ -38,9 +41,8 @@
 				        </div>
 				    #}
 
-
-				<button type="submit" id="login-button">Sign in</button>
-                <p class="text-light"><b>Not registered yet?<b><a href="/register" class="text-success"><br> <b>Sign up now<b></a></p>
+				<button class="btn btn-success" type="submit" id="login-button">Sign in</button>
+                <p class="font-weight-normal text-dark"><b>Not registered yet?<b><a href="/register" class="text-dark"><br>Sign up now</a></p>
 			</form>
 		</div>
 	</div>
