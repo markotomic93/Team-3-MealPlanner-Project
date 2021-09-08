@@ -207,12 +207,12 @@ class MealController extends AbstractController
             $user_name = $form["user_name"]->getData();
             $email = $form["email"]->getData();
             $user_image = $form["user_image"]->getData();
-            
+
 
             $user->setUserName($user_name);
             $user->setEmail($email);
             $user->setUserImage($user_image);
-            
+
 
             $em = $this->getDoctrine()->getManager();
 
@@ -222,7 +222,7 @@ class MealController extends AbstractController
             $this->addFlash('notice', 'Profile Edited');
 
             return $this->redirectToRoute('manageusers');
-        }   
+        }
 
         return $this->render('meal/profile.html.twig', [
             "form" => $form->createView()
@@ -239,23 +239,35 @@ class MealController extends AbstractController
         return $this->render('meal/manageusers.html.twig', array('user' => $user));
     }
 
+    //=== Delete user===
+
+    #[Route('/deleteuser/{id}', name: 'deleteuser')]
+    public function deleteuser($id): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('App:User')->find($id);
+        $em->remove($user);
+        $em->flush();
+
+        $this->addFlash('notice', 'User Removed');
+
+        return $this->redirectToRoute('manageusers');
+    }
+
 
     #[Route('/schedule', name: 'schedule')]
     public function schedule(): Response
     {
-        return $this->render('meal/schedule.html.twig', array(
-           
-        ));
+        return $this->render('meal/schedule.html.twig', array());
     }
 
     #[Route('/add/schedule/{meal_id}', name: 'addSchedule')]
     public function addSchedule($meal_id): Response
     {
         $meal = $this->getDoctrine()->getRepository(Meals::class)->find($meal_id);
-      
+
         return $this->render('meal/add.html.twig', array(
-           "meal" => $meal
+            "meal" => $meal
         ));
     }
-
 }
