@@ -254,6 +254,14 @@ class MealController extends AbstractController
         return $this->redirectToRoute('manageusers');
     }
 
+    //=== Blocked user===
+    #[Route('/block', name: 'block')]
+    public function block(): Response
+    {
+
+        return $this->render('meal/block.html.twig');
+    }
+
 
     #[Route('/schedule', name: 'schedule')]
     public function schedule(): Response
