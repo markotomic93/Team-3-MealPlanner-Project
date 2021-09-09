@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
 use App\Entity\Meals;
+use App\Entity\Schedule;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class MealController extends AbstractController
@@ -262,7 +263,7 @@ class MealController extends AbstractController
         return $this->render('meal/block.html.twig');
     }
 
-
+        //---------- schedule-----------
     #[Route('/schedule', name: 'schedule')]
     public function schedule(): Response
     {
@@ -270,12 +271,66 @@ class MealController extends AbstractController
     }
 
     #[Route('/add/schedule/{meal_id}', name: 'addSchedule')]
-    public function addSchedule($meal_id): Response
+    public function addSchedule(Request $request,$meal_id): Response
     {
         $meal = $this->getDoctrine()->getRepository(Meals::class)->find($meal_id);
 
+        //------------------- create add schedule form --------
+        $shcedule = new Schedule;
+        $form = $this->createFormBuilder($shcedule)
+            ->add("meal_time", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
+            "choices" => array(
+            'breakfast' => 'Break Fast',
+            'lunch' => 'Lunch',
+            'dinner' => 'dinner'
+             )))
+         
+             ->add("day", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
+             "choices" => array(
+             'monday' => 'monday',
+             'tuseday' => 'tuseday',
+             'wednesday' => 'wednesday',
+             'thursday' => 'thursday',
+             'friday' => 'friday',
+             'saturday' => 'saturday',
+             'sunday' => 'sunday'
+             )))
+
+             ->add("save", SubmitType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
+              "label" => "create Meal"
+             ))->getForm();
+          
+             $form->handleRequest($request);
+
+             //--------- end of add schedule form ---------
+
+             //---------- store add schedule form --------
+
+             if ($form->isSubmitted() && $form->isValid()) {
+               
+                $meal_time = $form["meal_time"]->getData();
+                $day = $form["day"]->getData();
+
+                $shcedule->setMealName($meal->getName());
+                $shcedule->setUserFkId($this->getUser()->getId());
+                $shcedule->setMealTime($meal_time);
+                $shcedule->setDay($day);
+    
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($shcedule);
+                $em->flush();
+    
+                $this->addFlash('notice', 'Meal Schedule Added');
+    
+                return $this->redirectToRoute('schedule');
+            }
+
+
+             //------------ end of add schedule form --------
+
         return $this->render('meal/add.html.twig', array(
-            "meal" => $meal
+            "meal" => $meal,
+            "form" => $form->createView()
         ));
     }
 }
