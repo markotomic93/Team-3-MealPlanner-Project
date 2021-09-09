@@ -43,7 +43,7 @@ class MealController extends AbstractController
             ->add("prep_time", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("calories", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("url", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
-            ->add("cooking_steps", TextareaType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
+            
             ->add("type", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"), "choices" => array('vegan' => 'vegan', 'vegetarian' => 'vegetarian', 'lowcarb' => 'lowcarb', 'glutenfree' => 'glutenfree', 'dairyfree' => 'dairyfree')))
             ->add("save", SubmitType::class, array('attr' => array("class" => "btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style" => "margin-bottom:15px"), "label" => "Create Meal"))->getForm();
         $form->handleRequest($request);
@@ -56,9 +56,9 @@ class MealController extends AbstractController
             $prep_time = $form["prep_time"]->getData();
             $calories = $form["calories"]->getData();
             $url = $form["url"]->getData();
-            $cooking_steps = $form["cooking_steps"]->getData();
+            
             $type = $form["type"]->getData();
-            $cooking_steps = $form["cooking_steps"]->getData();
+            
 
             $meals->setName($name);
             $meals->setDescription($description);
@@ -67,7 +67,7 @@ class MealController extends AbstractController
             $meals->setPrepTime($prep_time);
             $meals->setCalories($calories);
             $meals->setUrl($url);
-            $meals->setCookingSteps($cooking_steps);
+            
             $meals->setType($type);
 
             $em = $this->getDoctrine()->getManager();
@@ -114,7 +114,7 @@ class MealController extends AbstractController
             ->add("prep_time", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("calories", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("url", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
-            ->add("cooking_steps", TextareaType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
+            
             ->add("type", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"), "choices" => array('vegan' => 'vegan', 'vegetarian' => 'vegetarian', 'lowcarb' => 'lowcarb', 'glutenfree' => 'gluten free', 'dairyfree' => 'dairyfree')))
             ->add("save", SubmitType::class, array('attr' => array("class" => "btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style" => "margin-bottom:15px"), "label" => "Edit Complete"))->getForm();
         $form->handleRequest($request);
@@ -127,9 +127,9 @@ class MealController extends AbstractController
             $prep_time = $form["prep_time"]->getData();
             $calories = $form["calories"]->getData();
             $url = $form["url"]->getData();
-            $cooking_steps = $form["cooking_steps"]->getData();
+           
             $type = $form["type"]->getData();
-            $cooking_steps = $form["cooking_steps"]->getData();
+           
 
             $meals->setName($name);
             $meals->setDescription($description);
@@ -138,7 +138,7 @@ class MealController extends AbstractController
             $meals->setPrepTime($prep_time);
             $meals->setCalories($calories);
             $meals->setUrl($url);
-            $meals->setCookingSteps($cooking_steps);
+            
             $meals->setType($type);
 
             $em = $this->getDoctrine()->getManager();

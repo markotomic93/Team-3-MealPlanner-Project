@@ -52,11 +52,7 @@ class Meals
      */
     private $url;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $cooking_steps;
-
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -151,17 +147,7 @@ class Meals
         return $this;
     }
 
-    public function getCookingSteps(): ?string
-    {
-        return $this->cooking_steps;
-    }
-
-    public function setCookingSteps(string $cooking_steps): self
-    {
-        $this->cooking_steps = $cooking_steps;
-
-        return $this;
-    }
+    
 
     public function getType(): ?string
     {
