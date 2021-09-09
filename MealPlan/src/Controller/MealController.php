@@ -230,8 +230,10 @@ class MealController extends AbstractController
         ]);
     }
 
-
-    //=== Showing all the users===
+    //==
+    //=== Showing all the users ====
+    //==
+   
 
     #[Route('/manageusers', name: 'manageusers')]
     public function manageusers(): Response
@@ -240,7 +242,9 @@ class MealController extends AbstractController
         return $this->render('meal/manageusers.html.twig', array('user' => $user));
     }
 
-    //=== Delete user===
+    //==
+    //=== Delete  users ====
+    //==
 
     #[Route('/deleteuser/{id}', name: 'deleteuser')]
     public function deleteuser($id): Response
@@ -255,7 +259,9 @@ class MealController extends AbstractController
         return $this->redirectToRoute('manageusers');
     }
 
-    //=== Blocked user===
+    //==
+    //=== Blocking users ====
+    //==
     #[Route('/block', name: 'block')]
     public function block(): Response
     {
@@ -263,7 +269,11 @@ class MealController extends AbstractController
         return $this->render('meal/block.html.twig');
     }
 
-        //---------- schedule-----------
+
+
+    //==
+    //=== Schedule ====
+    //==
     #[Route('/schedule', name: 'schedule')]
     public function schedule(): Response
     {

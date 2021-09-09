@@ -1,63 +1,91 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container">
+{% block hero %}{% endblock %}
+<h2 class="text-center"> Here you can pick your favourite meals and make your own Weekly Planner </h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Days</th>
-      <th scope="col">Breakfast</th>
-      <th scope="col">Lunch</th>
-      <th scope="col">Dinner</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-  
-    <tr>
-      <th scope="row">Monday</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Thursday</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">wednesday</th>
-      <td colspan="2"></td>
-      <td></td>
-    </tr>
+<div class="container d-flex justify-content-center">
 
-      <tr>
-      <th scope="row">Thursday</th>
-      <td colspan="2"></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Friday</th>
-      <td colspan="2"></td>
-      <td>r</td>
-    </tr>
-    <tr>
-      <th scope="row">Saturday</th>
-      <td colspan="2"></td>
-      <td></td>
-    </tr>
-
-    <tr>
-      <th scope="row">Sunday</th>
-      <td colspan="2"></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
+ <table class="table table-bordered table-striped table-dark align-middle  text-white text-center  w-75  mt-5">
+        <thead>
+            <tr>
+              <th>Meals of the Day</th>
+              <th>Monday</th> 
+              <th>Tuesday</th> 
+              <th>Wendesday</th> 
+              <th>Thursday</th> 
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Breakfast</th>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+            </tr>
+            <tr>
+                <th scope="row">Lunch</th>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+            </tr>
+            <tr>
+                <th scope="row">Dinner</th>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
+            </tr>         
+        </tbody>
+    </table> 
 </div>
+<!-- Modal -->
+<div class="modal fade" id="mealsmodal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Here you can pick one of our meals :</h5>
+      </div>
 
+{# <div class="row" id="section">
+        {% for meal in meals %}
+            <div class="col-10 offset-1 col-md-4 offset-md-0 mb-4">
+                <div class="card mb-4 bg-transparent">
+                 <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
+                    <div class="card-body shadow bg-light text-center">               
+                        <h3 class="card-title">{{ meal.name }} </h3>
+                        <hr>
+                        <div class="card-title text-secondary "><i class="icon-green bi bi-book" style="color:green;"> &nbsp  </i>{{ meal.ingredients }}</div>
+                        <div class="card-title "><i class=" far fa-clock"style="color:green;" >&nbsp {{ meal.prep_time }}</i> </div>
+                        <br>      
+                    </div>
+                </div>
+            </div>
+        {% endfor %} #}
+      <div class="modal-body">
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Add to Planner</button>
+
+        {# <a type="button" href="/add/schedule/{{ meals.id }}" class="btn btn-primary">Add to Planner</a> #}
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
