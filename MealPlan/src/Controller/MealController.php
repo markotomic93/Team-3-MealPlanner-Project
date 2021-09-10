@@ -277,7 +277,17 @@ class MealController extends AbstractController
     #[Route('/schedule', name: 'schedule')]
     public function schedule(): Response
     {
-        return $this->render('meal/schedule.html.twig', array());
+        $id = $this->getUser()->getId();
+      
+        $week = array("monday","tuesday","wednesday","thursday","friday","saturday","sunday");
+        $meals = $this->getDoctrine()->getRepository(Schedule::class)->findAll();
+        return $this->render('meal/schedule.html.twig', [
+            "meals" => $meals,
+            "week" => $week,
+            "id" => $id,
+            "statusMeal" => "false",
+            "i" => 0
+        ]);
     }
 
     #[Route('/add/schedule/{meal_id}', name: 'addSchedule')]

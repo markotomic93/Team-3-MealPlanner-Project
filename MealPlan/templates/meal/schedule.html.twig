@@ -1,91 +1,87 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% block hero %}{% endblock %}
-<h2 class="text-center"> Here you can pick your favourite meals and make your own Weekly Planner </h2>
+	{% block hero %}{% endblock %}
+	<h2 class="text-center">
+		Here you can pick your favourite meals and make your own Weekly Planner
+	</h2>
 
-<div class="container d-flex justify-content-center">
+	<div class="container d-flex justify-content-center">
 
- <table class="table table-bordered table-striped table-dark align-middle  text-white text-center  w-75  mt-5">
-        <thead>
-            <tr>
-              <th>Meals of the Day</th>
-              <th>Monday</th> 
-              <th>Tuesday</th> 
-              <th>Wendesday</th> 
-              <th>Thursday</th> 
-              <th>Friday</th>
-              <th>Saturday</th>
-              <th>Sunday</th> 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Breakfast</th>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-            </tr>
-            <tr>
-                <th scope="row">Lunch</th>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-            </tr>
-            <tr>
-                <th scope="row">Dinner</th>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-                <td class="text"><button type="button" title="Add Meal" class="btn btn-light" data-toggle="modal" data-target="#mealsmodal"><i class="fa fa-plus"></i></button></td>
-            </tr>         
-        </tbody>
-    </table> 
-</div>
-<!-- Modal -->
-<div class="modal fade" id="mealsmodal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Here you can pick one of our meals :</h5>
-      </div>
+		<table class="table table-bordered table-striped table-dark align-middle  text-white text-center  w-75  mt-5">
+			<thead>
+				<tr>
+					<th>Meals of the Day</th>
+					<th>Monday</th>
+					<th>Tuesday</th>
+					<th>Wendesday</th>
+					<th>Thursday</th>
+					<th>Friday</th>
+					<th>Saturday</th>
+					<th>Sunday</th>
+				</tr>
+			</thead>
 
-{# <div class="row" id="section">
-        {% for meal in meals %}
-            <div class="col-10 offset-1 col-md-4 offset-md-0 mb-4">
-                <div class="card mb-4 bg-transparent">
-                 <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
-                    <div class="card-body shadow bg-light text-center">               
-                        <h3 class="card-title">{{ meal.name }} </h3>
-                        <hr>
-                        <div class="card-title text-secondary "><i class="icon-green bi bi-book" style="color:green;"> &nbsp  </i>{{ meal.ingredients }}</div>
-                        <div class="card-title "><i class=" far fa-clock"style="color:green;" >&nbsp {{ meal.prep_time }}</i> </div>
-                        <br>      
-                    </div>
-                </div>
-            </div>
-        {% endfor %} #}
-      <div class="modal-body">
-       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Add to Planner</button>
+			<tbody>
+				<tr>
+					<th scope="row">Breakfast</th>
+					{% for day in week %}
+						{% for meal in meals %}
+							{% if day == meal.day and meal.meal_time == "Break Fast" and meal.user_fk_id == id %}
+								{% set statusMeal = "true" %}
+							{% endif %}
+						{% endfor %}
+						{% if statusMeal == "true" %}
+           
+							<td>{{ meals[i].id }}</td>
+						{% else %}
+							<td>Not found</td>
+						{% endif %}
+						{% set statusMeal = "false" %}
+						{% set i = i+1 %}
+					{% endfor %}
+				</tr>
+        
 
-        {# <a type="button" href="/add/schedule/{{ meals.id }}" class="btn btn-primary">Add to Planner</a> #}
-      </div>
-    </div>
-  </div>
-</div>
+				<tr>
+					<th scope="row">Lunch</th>
+					{% set i = 0 %}
+					{% for day in week %}
+						{% for meal in meals %}
+							{% if day == meal.day and meal.meal_time == "Lunch" and meal.user_fk_id == id %}
+								{% set statusMeal = "true" %}
+							{% endif %}
+						{% endfor %}
+						{% if statusMeal == "true" %}
+							<td>{{ meals[i].meal_name }}</td>
+						{% else %}
+							<td>Not found</td>
+						{% endif %}
+						{% set statusMeal = "false" %}
+						{% set i = i+1 %}
+					{% endfor %}
+				</tr>
 
+				<tr>
+					<th scope="row">Dinner</th>
+					{% set i = 0 %}
+					{% for day in week %}
+						{% for meal in meals %}
+							{% if day == meal.day and meal.meal_time == "dinner" and meal.user_fk_id == id %}
+								{% set statusMeal = "true" %}
+							{% endif %}
+						{% endfor %}
+						{% if statusMeal == "true" %}
+							<td>{{ meals[i].meal_name }}</td>
+						{% else %}
+							<td>Not found</td>
+						{% endif %}
+						{% set statusMeal = "false" %}
+						{% set i = i+1 %}
+					{% endfor %}
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
 {% endblock %}
-

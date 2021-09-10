@@ -20,17 +20,17 @@ class Schedule
     /**
      * @ORM\Column(type="integer")
      */
-    private $user_fk_id;
+    public $user_fk_id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $meal_name;
+    public $meal_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $meal_time;
+    public $meal_time;
 
     /**
      * @ORM\Column(type="string", length=255)
