@@ -187,6 +187,28 @@ class MealController extends AbstractController
             array('meals' => $meals)
         );
     }
+    //==
+    //=== Filtering Calories ===
+    //== 
+    #[Route('/filter/calories/{a}/{b}', name: 'meal.caloriesFilter')]
+    public function caloriesFilter(int $a,int $b): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $all = $em->getRepository(Meals::class)->findAll();
+        $meals = array();
+    
+        foreach($all as $meal)
+        {
+               if($meal->getCalories() >= $a && $meal->getCalories() <= $b)
+               {
+                   $meals[] = $meal;
+               }
+        }
+        return $this->render(
+            'meal/index.html.twig',
+            array('meals' => $meals)
+        );
+    }
 
 
     //==
