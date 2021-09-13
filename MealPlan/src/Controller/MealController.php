@@ -324,17 +324,17 @@ class MealController extends AbstractController
          
              ->add("day", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
              "choices" => array(
-             'monday' => 'monday',
-             'tuesday' => 'tuesday',
-             'wednesday' => 'wednesday',
-             'thursday' => 'thursday',
-             'friday' => 'friday',
-             'saturday' => 'saturday',
-             'sunday' => 'sunday'
+             'Monday' => 'monday',
+             'Tuesday' => 'tuesday',
+             'Wednesday' => 'wednesday',
+             'Thursday' => 'thursday',
+             'Friday' => 'friday',
+             'Saturday' => 'saturday',
+             'Sunday' => 'sunday'
              )))
 
              ->add("save", SubmitType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
-              "label" => "create Meal"
+              "label" => "Add to my schedule"
              ))->getForm();
           
              $form->handleRequest($request);

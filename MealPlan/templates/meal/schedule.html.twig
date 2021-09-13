@@ -4,94 +4,100 @@
 	<h2 class="text-center">
 		Here you can check your schedule for the week
 	</h2>
+	<div class="container d-flex justify-content-center">
+		<div class="col">
+			<div class="d-flex justify-content-center">
+				<table class="table table-bordered table-striped table-dark align-middle  text-white text-center  w-75  mt-5">
+					<thead>
+						<tr>
+							<th>Monday</th>
+							<th>Tuesday</th>
+							<th>Wendesday</th>
+							<th>Thursday</th>
+							<th>Friday</th>
+							<th>Saturday</th>
+							<th>Sunday</th>
+						</tr>
+					</thead>
 
-	<div class="container">
-		<div class="d-flex justify-content-center">
-		<table class="table table-bordered table-striped table-dark align-middle  text-white text-center  w-75  mt-5">
-			<thead>
-				<tr>
-					<th>Monday</th>
-					<th>Tuesday</th>
-					<th>Wendesday</th>
-					<th>Thursday</th>
-					<th>Friday</th>
-					<th>Saturday</th>
-					<th>Sunday</th>
-				</tr>
-			</thead>
+					<tbody>
+						<tr>
+							{% set i = 0 %}
+							{% for day in week %}
+								{% for meal in meals %}
+									{% if day == meal.day and meal.user_fk_id == id %}
+										{% set statusMeal = "true" %}
 
-			<tbody>
-				<tr>
-					{% set i = 0 %}
-					{% for day in week %}
-						{% for meal in meals %}
-							{% if day == meal.day and meal.user_fk_id == id %}
-								{% set statusMeal = "true" %}
-								
-							{% endif %}
-						{% endfor %}
-						{% if statusMeal == "true" %}
-           
-							<td>{{ meals[i].meal_name }}<br><a href="/deleteschedule/{{ meals[i].id }}" onclick="return confirm('Are you sure you want to delete this?')"><i class="fas fa-minus btn btn-outline-danger  fw-light rounded-pill"></i></a>
-							</td>
-							
-						{% else %}
-						
-							<td><a href="/" style="text-decoration: none; color:red;"><i class="fas fa-plus btn btn-outline-danger  fw-light rounded-pill"></i></a></td>
-							
-						{% endif %}
-						
-						{% set statusMeal = "false" %}
-						{% set i = i+1 %}
-						
-					{% endfor %}
-					
-				</tr>
-        
-{# 
-				<tr>
-					<th scope="row">Lunch</th>
-					{% set i = 0 %}
-					{% for day in week %}
-						{% for meal in meals %}
-							{% if day == meal.day and meal.meal_time == "Lunch" and meal.user_fk_id == id %}
-								{% set statusMeal = "true" %}
-							{% endif %}
-						{% endfor %}
-						{% if statusMeal == "true" %}
-							<td>{{ meals[i].id }}</td>
-						{% else %}
-							<td>+</td>
-						{% endif %}
-						{% set statusMeal = "false" %}
-						{% set i = i+1 %}
-					{% endfor %}
-				</tr>
+									{% endif %}
+								{% endfor %}
+								{% if statusMeal == "true" %}
 
-				<tr>
-					<th scope="row">Dinner</th>
-					{% set i = 0 %}
-					{% for day in week %}
-						{% for meal in meals %}
-							{% if day == meal.day and meal.meal_time == "dinner" and meal.user_fk_id == id %}
-								{% set statusMeal = "true" %}
-							{% endif %}
-						{% endfor %}
-						{% if statusMeal == "true" %}
-							<td>{{ meals[i].id }}</td>
-						{% else %}
-							<td>+</td>
-						{% endif %}
-						{% set statusMeal = "false" %}
-						{% set i = i+1 %}
-					{% endfor %}
-				</tr> #}
-			</tbody>
-		</table>
+									<td>{{ meals[i].meal_name }}<br><a href="/deleteschedule/{{ meals[i].id }}" onclick="return confirm('Are you sure you want to delete this?')">
+											<i class="fas fa-minus btn btn-outline-danger  fw-light rounded-pill"></i>
+										</a>
+									</td>
+
+								{% else %}
+
+									<td>
+										<a href="/" style="text-decoration: none; color:red;">
+											<i class="fas fa-plus btn btn-outline-danger  fw-light rounded-pill"></i>
+										</a>
+									</td>
+
+								{% endif %}
+
+								{% set statusMeal = "false" %}
+								{% set i = i+1 %}
+
+							{% endfor %}
+
+						</tr>
+
+						{# 
+																<tr>
+																	<th scope="row">Lunch</th>
+																	{% set i = 0 %}
+																	{% for day in week %}
+																		{% for meal in meals %}
+																			{% if day == meal.day and meal.meal_time == "Lunch" and meal.user_fk_id == id %}
+																				{% set statusMeal = "true" %}
+																			{% endif %}
+																		{% endfor %}
+																		{% if statusMeal == "true" %}
+																			<td>{{ meals[i].id }}</td>
+																		{% else %}
+																			<td>+</td>
+																		{% endif %}
+																		{% set statusMeal = "false" %}
+																		{% set i = i+1 %}
+																	{% endfor %}
+																</tr>
+												
+																<tr>
+																	<th scope="row">Dinner</th>
+																	{% set i = 0 %}
+																	{% for day in week %}
+																		{% for meal in meals %}
+																			{% if day == meal.day and meal.meal_time == "dinner" and meal.user_fk_id == id %}
+																				{% set statusMeal = "true" %}
+																			{% endif %}
+																		{% endfor %}
+																		{% if statusMeal == "true" %}
+																			<td>{{ meals[i].id }}</td>
+																		{% else %}
+																			<td>+</td>
+																		{% endif %}
+																		{% set statusMeal = "false" %}
+																		{% set i = i+1 %}
+																	{% endfor %}
+																</tr> #}
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-	</div>
 
 
-	
 	<div style="height:600px"></div>
 {% endblock %}
