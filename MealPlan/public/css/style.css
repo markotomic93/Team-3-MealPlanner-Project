@@ -1,29 +1,39 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .card-img-top {
-  width: 100%;
-  height: 20vw;
-  object-fit: cover;
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
 }
 
 .btndiv {
-  position: absolute;
-  bottom: 20px;
-  right: 80px;
+    position: absolute;
+    bottom: 20px;
+    right: 80px;
 }
 
+.hero .hero-text {
+    margin-top: -200px;
+    text-align: center;
+}
 
+.hero {
+    margin-bottom: 150px;
+    margin-top: -50px;
+}
 
-
-
+@media screen and (max-width: 680px) {
+    .hero .hero-text {
+        margin-top: -120px;
+    }
+}
