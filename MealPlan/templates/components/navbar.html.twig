@@ -1,10 +1,6 @@
 
-
-
 {% if is_granted('ROLE_ADMIN') == false %}
-
-<div class="container-flex">
-	
+<div class="container-flex">	
 	<nav class="navbar navbar-expand-md  navbar-light bg-light  justify-content-md-center ">
 		<div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,12 +35,9 @@
 </div>
 {% endif %}
 
-
 {% if is_granted('ROLE_ADMIN') %}
-
-
 	<div class="container-flex">
-		
+	
 		<nav class="navbar navbar-expand-md  navbar-light bg-transparent  justify-content-md-center ">
 			<div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

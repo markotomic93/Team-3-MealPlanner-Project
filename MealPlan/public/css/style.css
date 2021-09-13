@@ -1,55 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-  }
-
-    nav ul li a, .cpr {
-      margin: 10px;
-      padding: 20;
-      color: white;
-      font-weight: lighter;
-      text-transform: uppercase;
-      font-family: 'Open Sans', sans-serif;
-      position: relative;
-      -webkit-transition: all 1s;
-      transition: all 1s;
-      letter-spacing: 1px;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    hr {
-      height: 5px;
-      color: black;
-    }
-  
-  
-  footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 300px;
-  }
-  
-  .btn:hover{
-    background-color: #fff;
-    color: #1E2128;
-  }
-  
   .card-img-top {
     width: 100%;
     height: 20vw;
     object-fit: cover;
   }
 
+ .btndiv {
+  position:absolute;
+  bottom:20px;
+  right: 80px;
+  
+ }
+
+ 
