@@ -4,24 +4,22 @@
 {% if is_granted('ROLE_ADMIN') == false %}
 
 <div class="container-flex">
-	<div class="navlogo m-5  text-center">
-		<img src="../navlogo.png">
-	</div>
-	<nav class="navbar navbar-expand-md  navbar-light bg-transparent  justify-content-md-center ">
+	
+	<nav class="navbar navbar-expand-md  navbar-light bg-light  justify-content-md-center ">
 		<div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse " id="navbarNavDropdown">
 				<ul class="navbar-nav text-center mr-auto">
+				<li class="nav-item">
+						<a class="nav-link" href="/"><img class="logosmall" src="../../logosmall.png" width="50px" height="50px"></a>
+					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="/">Home
 							<span class="sr-only"></span>
 						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/">My Meals</a>
-					</li>
+					</li>					
 					<li class="nav-item">
 						<a class="nav-link" href="/profile/{{ app.user.id }}">My Profile</a>
 					</li>
@@ -46,9 +44,7 @@
 
 
 	<div class="container-flex">
-		<div class="navlogo m-5  text-center">
-			<img src="../navlogo.png">
-		</div>
+		
 		<nav class="navbar navbar-expand-md  navbar-light bg-transparent  justify-content-md-center ">
 			<div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

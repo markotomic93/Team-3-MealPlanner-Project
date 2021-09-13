@@ -7,50 +7,40 @@
 {% block nav %}{% endblock %}
 {% block hero %}{% endblock %}
 {% block footer %}{% endblock %}
-	<div class="containerlog mt-5">
-
+	<div class="container text-center mt-5">
+	<img class="logobig" src="../../logobig.png" width="600px" height="300px">
+</div>
+	<div class="containerlog mb-5 mt-5">
 		<h1>Register</h1>
-
 		{{ form_start(registrationForm) }}
-   
         <div class="text-dark">
 			{{ form_label(registrationForm.user_name) }}
 		</div>
 		<div class="mb-2">
 			{{ form_widget(registrationForm.user_name) }}
 		</div>
-
-
         <div class="text-dark">
 			{{ form_label(registrationForm.user_image) }}
 		</div>
 		<div class="mb-2">
 			{{ form_widget(registrationForm.user_image) }}
 		</div>
-        
-
 		<div class="text-dark">
 			{{ form_label(registrationForm.email) }}
 		</div>
 		<div class="mb-2">
 			{{ form_widget(registrationForm.email) }}
 		</div>
-
-
 		<div class="text-dark">
 			{{ form_label(registrationForm.Password) }}
 		</div>
 		<div class="mb-2">
 			{{ form_widget(registrationForm.Password)}}
 		</div>
-
-
-
 		<div class="text-dark">
 			{{ form_label(registrationForm.agreeTerms) }}
 			<span class="ml-2">{{ form_widget(registrationForm.agreeTerms) }}</span>
 		</div>
-
 		<button type="submit" class="btn btn-success">Register</button>
 		<a href="/login" class="btn btn-danger">Back</a>
 		{{ form_end(registrationForm) }}

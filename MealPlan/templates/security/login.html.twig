@@ -8,7 +8,9 @@ Welcome to Mealplanner
 {% block nav %}{% endblock %}
 {% block hero %}{% endblock %}
 {% block footer %}{% endblock %}
-
+<div class="container text-center mt-5">
+	<img class="logobig" src="../../logobig.png" width="600px" height="300px">
+</div>
 	<div class="wrapper">
 		<div class="containerlog">
 			<form method="post">
@@ -26,21 +28,18 @@ Welcome to Mealplanner
 				<h1 class="h3 mb-3 font-weight-normal text-dark">Please sign in</h1>
 				<input type="email" value="{{ last_username }}" placeholder="Your Email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 				<input type="password" placeholder="Password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
 				<input
 				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-				{#
-				        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+			
+				        {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
 				        See https://symfony.com/doc/current/security/remember_me.html
 				
 				        <div class="checkbox mb-3">
 				            <label>
 				                <input type="checkbox" name="_remember_me"> Remember me
 				            </label>
-				        </div>
-				    #}
-
+				        </div> #}
+				  
 				<button class="btn btn-success" type="submit" id="login-button">Sign in</button>
                 <p class="font-weight-normal text-dark"><b>Not registered yet?<b><a href="/register" class="text-dark"><br>Sign up now</a></p>
 			</form>
@@ -50,19 +49,7 @@ Welcome to Mealplanner
 
 
 
-		<ul class="bg-bubbles">
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-			<li>🍲</li>
-		</ul>
-	</div>
+	
 
 
 
