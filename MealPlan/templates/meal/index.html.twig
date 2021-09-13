@@ -3,62 +3,103 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<div class="container mt-5">
+	<div class="container mt-5">
 
-     <div class="d-flex justify-content-end mt-5 mb-5">
-        <div class="dropdown">
-            <button id="dropdownMenuButton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Show only Meal Group  </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="/">All Meals</a></li>
-                <li><a class="dropdown-item" href="/filter/vegan">Vegan</a></li>
-                <li><a class="dropdown-item" href="/filter/vegetarian">Vegetarian</a></li>
-                <li><a class="dropdown-item" href="/filter/lowcarb">Low-Carb</a></li>
-                <li><a class="dropdown-item" href="/filter/glutenfree">Gluten-free</a></li>
-                <li><a class="dropdown-item" href="/filter/dairyfree">Dairy-free</a></li>
-            </ul>
-        </div>
+	<div class="d-flex justify-content-end mt-5 mb-5">
+		<div class="dropdown">
+			<button id="dropdownMenuButton" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Show only Meal Group
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li>
+					<a class="dropdown-item" href="/">All Meals</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/vegan">Vegan</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/vegetarian">Vegetarian</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/lowcarb">Low-Carb</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/glutenfree">Gluten-free</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/dairyfree">Dairy-free</a>
+				</li>
+			</ul>
+		</div>
 
-           <div class="dropdown">
-            <button id="dropdownMenuButton" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Show only Calories  </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="/">No Limit</a></li>
-                <li><a class="dropdown-item" href="/filter/calories/100/200">100-200 Cal.</a></li>
-                <li><a class="dropdown-item" href="/filter/calories/200/300">200-300 Cal.</a></li>
-                <li><a class="dropdown-item" href="/filter/calories/300/400">300-400 Cal.</a></li>
-                <li><a class="dropdown-item" href="/filter/calories/400/500">400-500 Cal.</a></li>
-            </ul>
-        </div>
+		<div class="dropdown">
+			<button id="dropdownMenuButton" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Show only Calories
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li>
+					<a class="dropdown-item" href="/">No Limit</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/calories/100/200">100-200 Cal.</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/calories/200/300">200-300 Cal.</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/calories/300/400">300-400 Cal.</a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="/filter/calories/400/500">400-500 Cal.</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row" id="section">
+		{% for meal in meals %}
+			<div class="col-10 offset-1 col-md-4 offset-md-0 mb-4 ">
+				<div class="card h-100 mb-4 ">
+					<img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
+					<div class="card-body border-bottom box-shadow shadow bg-body text-center ">
+						<h3 class="card-title">{{ meal.name }}
+						</h3>
+						<hr>
+						<div class="card-title text-secondary ">
+							<i class="icon-green bi bi-book" style="color:green;">
+								&nbsp
+							</i>
+							{{ meal.ingredients }}</div>
+						<div class="card-title ">
+							<i class=" far fa-clock" style="color:green;">&nbsp
+								{{ meal.prep_time }}</i>
+						</div>
+						<br>
+						<div class="btndiv mt-auto">
+							{% if is_granted('ROLE_ADMIN') %}
+								<a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
+								<a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>
+								<hr>
+							{% endif %}
+							<a href="/details/{{ meal.id }}" class="btn btn-success rounded-pill">
+								<i class="fa fa-info"></i>
+								Details</a>
+							<a href="/add/schedule/{{ meal.id }}" class="btn btn-primary rounded-pill ">
+								<i class="fa fa-plus"></i>
+								Add to my Schedule</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
     </div>
-    
-    <div class="row" id="section">
-        {% for meal in meals %}
-            <div class="col-10 offset-1 col-md-4 offset-md-0 mb-4 ">
-                <div class="card h-100 mb-4 ">
-                 <img class="card-img-top" src="{{ meal.image }}" style="border:2px solid #e2e2e2;">
-                    <div class="card-body border-bottom box-shadow shadow bg-body text-center ">               
-                        <h3 class="card-title">{{ meal.name }} </h3>
-                        <hr>
-                        <div class="card-title text-secondary "><i class="icon-green bi bi-book" style="color:green;"> &nbsp  </i>{{ meal.ingredients }}</div>
-                        <div class="card-title "><i class=" far fa-clock"style="color:green;" >&nbsp {{ meal.prep_time }}</i> </div>
-                        <br>      
-                        <div class="btndiv mt-auto">  
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
-                            <a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>
-                        <hr>
-                        {% endif %}                 
-                        <a href="/details/{{ meal.id }}" class="btn btn-success rounded-pill" ><i class="fa fa-info"></i> Details</a>      
-                        <a href="/add/schedule/{{ meal.id }}"class="btn btn-primary rounded-pill "><i class="fa fa-plus"></i> Add to my Schedule</a>                     
-                        </div>          
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-<div>
+ 
+	
 
-<div style="height:300px"> </div>
+	
+
+	<div style="height:300px"></div>
 
 {% endblock %}
+

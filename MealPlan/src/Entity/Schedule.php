@@ -26,11 +26,7 @@ class Schedule
      * @ORM\Column(type="string", length=255)
      */
     public $meal_name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    public $meal_time;
+  
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -66,17 +62,8 @@ class Schedule
         return $this;
     }
 
-    public function getMealTime(): ?string
-    {
-        return $this->meal_time;
-    }
 
-    public function setMealTime(string $meal_time): self
-    {
-        $this->meal_time = $meal_time;
-
-        return $this;
-    }
+    
 
     public function getDay(): ?string
     {

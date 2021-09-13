@@ -318,19 +318,14 @@ class MealController extends AbstractController
         $meal = $this->getDoctrine()->getRepository(Meals::class)->find($meal_id);
 
         //------------------- create add schedule form --------
-        $shcedule = new Schedule;
-        $form = $this->createFormBuilder($shcedule)
-            ->add("meal_time", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
-            "choices" => array(
-            'breakfast' => 'Break Fast',
-            'lunch' => 'Lunch',
-            'dinner' => 'dinner'
-             )))
+        $schedule = new Schedule;
+        $form = $this->createFormBuilder($schedule)
+           
          
              ->add("day", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
              "choices" => array(
              'monday' => 'monday',
-             'tuseday' => 'tuseday',
+             'tuesday' => 'tuesday',
              'wednesday' => 'wednesday',
              'thursday' => 'thursday',
              'friday' => 'friday',
@@ -350,16 +345,16 @@ class MealController extends AbstractController
 
              if ($form->isSubmitted() && $form->isValid()) {
                
-                $meal_time = $form["meal_time"]->getData();
+                
                 $day = $form["day"]->getData();
 
-                $shcedule->setMealName($meal->getName());
-                $shcedule->setUserFkId($this->getUser()->getId());
-                $shcedule->setMealTime($meal_time);
-                $shcedule->setDay($day);
+                $schedule->setMealName($meal->getName());
+                $schedule->setUserFkId($this->getUser()->getId());
+                
+                $schedule->setDay($day);
     
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($shcedule);
+                $em->persist($schedule);
                 $em->flush();
     
                 $this->addFlash('notice', 'Meal Schedule Added');
@@ -374,5 +369,23 @@ class MealController extends AbstractController
             "meal" => $meal,
             "form" => $form->createView()
         ));
+    }
+
+
+    //==
+    //=== Delete meal from schedule ====
+    //==
+
+    #[Route('/deleteschedule/{id}', name: 'delete_schedule')]
+    public function deleteschedule($id): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $meals = $em->getRepository('App:Schedule')->find($id);
+        $em->remove($meals);
+        $em->flush();
+
+        $this->addFlash('notice', 'Meal Removed');
+
+        return $this->redirectToRoute('schedule');
     }
 }

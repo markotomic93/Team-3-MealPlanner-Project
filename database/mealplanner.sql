@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 12, 2021 at 04:05 PM
+-- Generation Time: Sep 13, 2021 at 02:20 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -107,19 +107,8 @@ CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
   `user_fk_id` int(11) NOT NULL,
   `meal_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meal_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `day` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `schedule`
---
-
-INSERT INTO `schedule` (`id`, `user_fk_id`, `meal_name`, `meal_time`, `day`) VALUES
-(1, 7, 'Lemon Focaccia\r\n', 'Lunch', 'wednesday'),
-(2, 7, 'Lemon Focaccia\r\n', 'dinner', 'thursday'),
-(3, 7, 'Lemon Focaccia\r\n', 'Break Fast', 'monday'),
-(4, 7, 'Lemon Focaccia\r\n', 'Break Fast', 'monday');
 
 -- --------------------------------------------------------
 
@@ -189,7 +178,7 @@ ALTER TABLE `meals`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `user`

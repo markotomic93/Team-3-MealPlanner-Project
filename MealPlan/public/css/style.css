@@ -6,16 +6,24 @@
   padding: 0;
 }
 
-  .card-img-top {
-    width: 100%;
-    height: 20vw;
-    object-fit: cover;
-  }
+body {
+  height: 100%;
+  width: 100%;
+}
 
- .btndiv {
-  position:absolute;
-  bottom:20px;
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
+
+.btndiv {
+  position: absolute;
+  bottom: 20px;
   right: 80px;
- }
+}
 
- 
+
+
+
+
