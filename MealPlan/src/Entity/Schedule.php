@@ -33,6 +33,15 @@ class Schedule
      */
     private $day;
 
+     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    public $meal_image;
+
+    
+
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,4 +85,24 @@ class Schedule
 
         return $this;
     }
+    
+
+    public function getMealImage(): ?string
+    {
+        return $this->meal_image;
+    }
+
+    public function setMealImage(string $meal_image): self
+    {
+        $this->meal_image = $meal_image;
+
+        return $this;
+    }
+
+
+
+    
+
+    
+   
 }

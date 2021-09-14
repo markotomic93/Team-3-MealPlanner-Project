@@ -44,7 +44,7 @@ class MealController extends AbstractController
             ->add("prep_time", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("calories", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("url", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
-            
+
             ->add("type", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"), "choices" => array('vegan' => 'vegan', 'vegetarian' => 'vegetarian', 'lowcarb' => 'lowcarb', 'glutenfree' => 'glutenfree', 'dairyfree' => 'dairyfree')))
             ->add("save", SubmitType::class, array('attr' => array("class" => "btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style" => "margin-bottom:15px"), "label" => "Create Meal"))->getForm();
         $form->handleRequest($request);
@@ -57,9 +57,9 @@ class MealController extends AbstractController
             $prep_time = $form["prep_time"]->getData();
             $calories = $form["calories"]->getData();
             $url = $form["url"]->getData();
-            
+
             $type = $form["type"]->getData();
-            
+
 
             $meals->setName($name);
             $meals->setDescription($description);
@@ -68,7 +68,7 @@ class MealController extends AbstractController
             $meals->setPrepTime($prep_time);
             $meals->setCalories($calories);
             $meals->setUrl($url);
-            
+
             $meals->setType($type);
 
             $em = $this->getDoctrine()->getManager();
@@ -115,7 +115,7 @@ class MealController extends AbstractController
             ->add("prep_time", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("calories", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
             ->add("url", TextType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px")))
-            
+
             ->add("type", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"), "choices" => array('vegan' => 'vegan', 'vegetarian' => 'vegetarian', 'lowcarb' => 'lowcarb', 'glutenfree' => 'gluten free', 'dairyfree' => 'dairyfree')))
             ->add("save", SubmitType::class, array('attr' => array("class" => "btn-outline-primary fw-light btn-sm border-1 shadow-sm rounded-pill m-3", "style" => "margin-bottom:15px"), "label" => "Edit Complete"))->getForm();
         $form->handleRequest($request);
@@ -128,9 +128,9 @@ class MealController extends AbstractController
             $prep_time = $form["prep_time"]->getData();
             $calories = $form["calories"]->getData();
             $url = $form["url"]->getData();
-           
+
             $type = $form["type"]->getData();
-           
+
 
             $meals->setName($name);
             $meals->setDescription($description);
@@ -139,7 +139,7 @@ class MealController extends AbstractController
             $meals->setPrepTime($prep_time);
             $meals->setCalories($calories);
             $meals->setUrl($url);
-            
+
             $meals->setType($type);
 
             $em = $this->getDoctrine()->getManager();
@@ -191,18 +191,16 @@ class MealController extends AbstractController
     //=== Filtering Calories ===
     //== 
     #[Route('/filter/calories/{a}/{b}', name: 'meal.caloriesFilter')]
-    public function caloriesFilter(int $a,int $b): Response
+    public function caloriesFilter(int $a, int $b): Response
     {
         $em = $this->getDoctrine()->getManager();
         $all = $em->getRepository(Meals::class)->findAll();
         $meals = array();
-    
-        foreach($all as $meal)
-        {
-               if($meal->getCalories() >= $a && $meal->getCalories() <= $b)
-               {
-                   $meals[] = $meal;
-               }
+
+        foreach ($all as $meal) {
+            if ($meal->getCalories() >= $a && $meal->getCalories() <= $b) {
+                $meals[] = $meal;
+            }
         }
         return $this->render(
             'meal/index.html.twig',
@@ -255,7 +253,7 @@ class MealController extends AbstractController
     //==
     //=== Showing all the users ====
     //==
-   
+
 
     #[Route('/manageusers', name: 'manageusers')]
     public function manageusers(): Response
@@ -300,8 +298,8 @@ class MealController extends AbstractController
     public function schedule(): Response
     {
         $id = $this->getUser()->getId();
-      
-        $week = array("monday","tuesday","wednesday","thursday","friday","saturday","sunday");
+
+        $week = array("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday");
         $meals = $this->getDoctrine()->getRepository(Schedule::class)->findAll();
         return $this->render('meal/schedule.html.twig', [
             "meals" => $meals,
@@ -313,57 +311,64 @@ class MealController extends AbstractController
     }
 
     #[Route('/add/schedule/{meal_id}', name: 'addSchedule')]
-    public function addSchedule(Request $request,$meal_id): Response
+    public function addSchedule(Request $request, $meal_id): Response
     {
         $meal = $this->getDoctrine()->getRepository(Meals::class)->find($meal_id);
 
         //------------------- create add schedule form --------
         $schedule = new Schedule;
         $form = $this->createFormBuilder($schedule)
+
+        
+
+
+            ->add("day", ChoiceType::class, array(
+                'attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
+                "choices" => array(
+                    'Monday' => 'monday',
+                    'Tuesday' => 'tuesday',
+                    'Wednesday' => 'wednesday',
+                    'Thursday' => 'thursday',
+                    'Friday' => 'friday',
+                    'Saturday' => 'saturday',
+                    'Sunday' => 'sunday'
+                )
+            ))
+
+            ->add("save", SubmitType::class, array(
+                'attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
+                "label" => "Add to my schedule"
+            ))->getForm();
+
+        $form->handleRequest($request);
+
+        //--------- end of add schedule form ---------
+
+        //---------- store add schedule form --------
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $day = $form["day"]->getData();
+
            
-         
-             ->add("day", ChoiceType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
-             "choices" => array(
-             'Monday' => 'monday',
-             'Tuesday' => 'tuesday',
-             'Wednesday' => 'wednesday',
-             'Thursday' => 'thursday',
-             'Friday' => 'friday',
-             'Saturday' => 'saturday',
-             'Sunday' => 'sunday'
-             )))
+            $schedule->setMealImage($meal->getImage());
+            $schedule->setMealName($meal->getName());
+            $schedule->setUserFkId($this->getUser()->getId());
 
-             ->add("save", SubmitType::class, array('attr' => array("class" => "form-control fw-light border-1 border-muted rounded-pill bg-light shadow-sm mt-3 text-muted", "style" => "margin-bottom:15px"),
-              "label" => "Add to my schedule"
-             ))->getForm();
-          
-             $form->handleRequest($request);
+            $schedule->setDay($day);
 
-             //--------- end of add schedule form ---------
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($schedule);
+            $em->flush();
 
-             //---------- store add schedule form --------
+            $this->addFlash('notice', 'Meal Schedule Added');
 
-             if ($form->isSubmitted() && $form->isValid()) {
-               
-                
-                $day = $form["day"]->getData();
-
-                $schedule->setMealName($meal->getName());
-                $schedule->setUserFkId($this->getUser()->getId());
-                
-                $schedule->setDay($day);
-    
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($schedule);
-                $em->flush();
-    
-                $this->addFlash('notice', 'Meal Schedule Added');
-    
-                return $this->redirectToRoute('schedule');
-            }
+            return $this->redirectToRoute('schedule');
+        }
 
 
-             //------------ end of add schedule form --------
+        //------------ end of add schedule form --------
 
         return $this->render('meal/add.html.twig', array(
             "meal" => $meal,
