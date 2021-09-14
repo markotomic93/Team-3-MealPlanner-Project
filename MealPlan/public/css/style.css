@@ -1,14 +1,25 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&family=Urbanist:wght@300&display=swap);
+
+
+@font-face { font-family: 'Poppins', sans-serif;font-weight: normal; src: url('Poppins-Normal.otf');}
+@font-face { font-family: 'Urbanist', sans-serif;font-weight: bold; src: url('Urbanist-Bold.otf');}
+@font-face { font-family: 'Playfair Display',serif;font-weight: normal; src: url('Playfair-Bold.otf');}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Playfair;
+    
 }
 
 body {
     height: 100%;
-    width: 100%;
+    width: 100%; 
+   
 }
+
 
 .card-img-top {
     width: 100%;
@@ -20,11 +31,14 @@ body {
     position: absolute;
     bottom: 20px;
     right: 80px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .hero .hero-text {
     margin-top: -200px;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18pt;
 }
 
 .hero {
@@ -32,8 +46,14 @@ body {
     margin-top: -50px;
 }
 
+.dropdown {
+    font-family: Poppins;
+}
+
+
 @media screen and (max-width: 680px) {
     .hero .hero-text {
         margin-top: -120px;
+      
     }
 }
