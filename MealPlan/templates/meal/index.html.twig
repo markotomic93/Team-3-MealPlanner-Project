@@ -78,8 +78,8 @@
 						<div class="mt-auto">
                         <hr>
 							{% if is_granted('ROLE_ADMIN') %}
-								<a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">edit</a>
-								<a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">delete</a>
+								<a href="/edit/{{ meal.id }}" class="btn btn-outline-success  fw-light rounded-pill">Edit</a>
+								<a href="/delete/{{ meal.id }}" class="btn btn-outline-danger  fw-light rounded-pill" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
 								
 							{% else %}
 							<a href="/details/{{ meal.id }}" class="btn btn-success rounded-pill">
