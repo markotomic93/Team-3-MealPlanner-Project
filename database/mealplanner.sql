@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 13, 2021 at 02:20 PM
+-- Generation Time: Sep 14, 2021 at 11:40 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -67,7 +67,7 @@ CREATE TABLE `meals` (
 
 INSERT INTO `meals` (`id`, `name`, `description`, `image`, `ingredients`, `prep_time`, `calories`, `url`, `type`) VALUES
 (1, 'Lemon Focaccia\r\n', 'A gorgeous, tart, salty, sweet, and addictive flatbread.', 'https://images.food52.com/Fe-Q7G0IcpBfntGFOlJ3ZkgoLFA=/660x440/filters:format(webp)/b38f2584-b44b-437c-acf1-a800d97132d2--foccaccia.jpg', '1 cup water\r\n1 teaspoon active dry yeast\r\n1 tablespoon coarse salt, divided\r\n3 tablespoons sugar\r\n1/4 cup olive oil\r\n10 ounces  flour\r\n1 large meyer lemon washed and sliced as thinly as possible\r\n2 teaspoons fresh rosemary needles', '3 hours', '350', 'https://food52.com/recipes/16573-meyer-lemon-focaccia', 'vegan'),
-(2, 'Esquites', 'Mexican Street Corn Salad', 'https://cookieandkate.com/images/2021/05/esquites-recipe-2-768x1157.jpg', 'Unsalted butter\r\n3 cups corn kernels \r\n¼ cup mayonnaise\r\n1 medium finely chopped jalapeño\r\n1 tablespoon lime juice\r\n1 teaspoon chili powder\r\n¼ cup finely chopped cilantro', '20 min', '150', 'https://cookieandkate.com/esquites-recipe/#tasty-recipes-38678-jump-target', 'Vegetarian'),
+(2, 'Esquites', 'Mexican Street Corn Salad', 'https://cookieandkate.com/images/2021/05/esquites-recipe-2-768x1157.jpg', 'Unsalted butter3 cups corn kernels ¼ cup mayonnaise1 medium finely chopped jalapeño1 tablespoon lime juice1 teaspoon chili powder¼ cup finely chopped cilantro', '20 min', '150', 'https://cookieandkate.com/esquites-recipe/#tasty-recipes-38678-jump-target', 'vegan'),
 (3, 'Zucchini Noodles', 'Fresh, raw zucchini noodles tossed with basil pesto and cherry tomatoes', 'https://cookieandkate.com/images/2016/06/zucchini-pesto-noodles-recipe-1-1-550x757.jpg', '3 large zucchini\r\nSalt\r\n1 pint cherry tomatoes\r\n1 cup fresh pesto      \r\nFresh basil leaves, for garnishing', '20 min', '180', 'https://cookieandkate.com/zucchini-noodles-with-pesto-recipe/', 'lowcarb'),
 (4, 'Shakshuka', ' Poached eggs in a hearty, spiced tomato and pepper sauce, topped with a tangy feta cheese and fresh cilantro or parsley.', 'https://cookieandkate.com/images/2019/02/best-shakshuka-recipe-3-768x1154.jpg', '\r\n1 large red bell pepper\r\n2 tablespoons tomato paste\r\n1 teaspoon ground cumin\r\n½ teaspoon smoked paprika\r\n1 large can crushed tomatoes\r\n2 tablespoons chopped fresh cilantro \r\n5 to 6 large eggs\r\n½ cup crumbled feta\r\nCrusty bread or pita', '35 min', '280', 'https://cookieandkate.com/foolproof-shakshuka-recipe/', 'lowcarb'),
 (5, 'Spicy Black Bean Soup', 'This healthy black bean soup recipe is easy to make with canned beans. It’s incredibly flavorful and delicious.', 'https://cookieandkate.com/images/2016/02/spicy-black-bean-soup-recipe-4-768x1154.jpg', '1 large carrot\r\n6 garlic cloves\r\n4 ½ teaspoons ground cumin\r\n½ teaspoon red pepper flakes \r\n4 cans  black beans, rinsed and drained\r\n4 cups low-sodium vegetable broth\r\n¼ cup chopped fresh cilantro', '55 min', '350', 'https://cookieandkate.com/spicy-vegan-black-bean-soup/', 'Vegan'),
@@ -107,8 +107,21 @@ CREATE TABLE `schedule` (
   `id` int(11) NOT NULL,
   `user_fk_id` int(11) NOT NULL,
   `meal_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `day` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `day` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meal_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `user_fk_id`, `meal_name`, `day`, `meal_image`) VALUES
+(95, 6, 'Shakshuka', 'monday', 'https://cookieandkate.com/images/2019/02/best-shakshuka-recipe-3-768x1154.jpg'),
+(98, 6, 'Cauliflower with yogurt', 'tuesday', 'https://i1.wp.com/farm7.static.flickr.com/6174/6261628374_0027ec9256_z.jpg?w=640'),
+(99, 6, 'Bun Cha', 'wednesday', 'https://images.squarespace-cdn.com/content/v1/5916c81cf7e0ab8d478806df/1625539107371-Z9R2RPNNXKJ36MVC6AOL/P6166020+copy.jpg?format=750w'),
+(100, 6, 'Dark Chocolate Zucchini Brownies', 'thursday', 'https://cookieandkate.com/images/2011/09/zucchini-brownies-11-550x368.jpg'),
+(102, 6, 'Colorful Veggie Sesame Noodles', 'friday', 'https://cookieandkate.com/images/2011/07/sesame-noodles-in-bowls-550x824.jpg'),
+(103, 6, 'Meatloaf', 'saturday', 'https://images.food52.com/9fAjkQ4PhtV9C3R_MNzwpkYtx9M=/660x440/filters:format(webp)/e33e39fb-e7d5-47d8-a6a0-656592690198--2014-1007_classic-meatloaf-025.jpg');
 
 -- --------------------------------------------------------
 
@@ -130,7 +143,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `user_name`, `user_image`) VALUES
-(2, 'eas@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$Y4ebfGwaU2ocI4gbpPPhheKtXekcEm1bgMMAwDPD056zY9019Ucvy', 'Eas', 'https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455_960_720.jpg'),
+(2, 'eas@gmail.com', '[\"ROLE_ADMIN\"]', '$2y$13$Y4ebfGwaU2ocI4gbpPPhheKtXekcEm1bgMMAwDPD056zY9019Ucvy', 'Eas', 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png'),
 (5, 'fred@gmail.com', '[\"ROLE_BLOCKED\"]', '$2y$13$MQ1ZlkcIVroty0YppNu/1uMsvXcz/HHo97sgJbp/smNVRqf0V2PHa', 'Fred', 'http://fred'),
 (6, 'bob@gmail.com', '[]', '$2y$13$eHLvNTv.Q/3MxzxpNq0v..uemCkDt8BFglX0yY4yCRlRaCrhuXSdS', 'Bob', 'http://Bob'),
 (7, 'pouyan@mail.com', '[]', '$2y$13$P/qlDuAJvmc.bqacwPt6d.BD4bzeUgzbqzP5BHmSDZd.rfteaRrou', 'pouyan', 'https://cdn.pixabay.com/photo/2015/12/01/15/43/black-1072366_960_720.jpg');
@@ -172,13 +185,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `meals`
 --
 ALTER TABLE `meals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `user`
